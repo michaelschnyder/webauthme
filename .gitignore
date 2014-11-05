@@ -181,3 +181,4 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+source/WebAuthMe.Cloud/ServiceConfiguration.Cloud.cscfg
