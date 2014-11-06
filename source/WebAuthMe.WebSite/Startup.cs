@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Nancy;
 using Owin;
 using WebAuthMe.WebSite;
 
@@ -11,6 +12,8 @@ namespace WebAuthMe.WebSite
         public void Configuration(IAppBuilder app)
         {
             app.UseNancy();
+
+            StaticConfiguration.DisableErrorTraces = false;
         }
     }
 }

@@ -54,7 +54,7 @@ namespace WebAuthMe.Core
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.Name, userIdentity.LastName),
-                    new Claim(ClaimTypes.GivenName, userIdentity.LastName),
+                    new Claim(ClaimTypes.GivenName, userIdentity.FirstName),
                     new Claim(ClaimTypes.Email, userIdentity.MailAddress), 
                 }),
 

@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Net.Http;
+using Newtonsoft.Json;
 
 namespace WebAuthMe.Core.AuthProvider
 {
@@ -27,11 +30,15 @@ namespace WebAuthMe.Core.AuthProvider
 
             var url = string.Format(accessUrlPattern, this.configuration["ClientId"], this.configuration["ClientSecret"], info["code"]);
 
+            var response = new HttpClient().GetStringAsync(url).Result;
+
+            var yammerInfo = JsonConvert.DeserializeObject<RootObject>(response);
+
             return new UserIdentity()
             {
-                FirstName = "John",
-                LastName = "Doe",
-                MailAddress = "john.doe@yammer.com"
+                FirstName = yammerInfo.user.first_name,
+                LastName = yammerInfo.user.last_name,
+                MailAddress = yammerInfo.user.contact.email_addresses.First().address
             };
         }
     }
