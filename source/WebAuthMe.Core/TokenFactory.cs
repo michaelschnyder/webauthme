@@ -41,9 +41,9 @@ namespace WebAuthMe.Core
             return tokenString;
         }
 
-        public string CreateToken(UserIdentity userIdentity)
+        public string CreateToken(UserIdentity userIdentity, string symmetricSecurityKey, string audience)
         {
-            var securityKey = Encoding.UTF8.GetBytes("ThisIsAnImportantStringAndIHaveNoIdeaIfThisIsVerySecureOrNot!");
+            var securityKey = Encoding.UTF8.GetBytes(symmetricSecurityKey);
 
             var tokenHandler = new JwtSecurityTokenHandler();
 
@@ -56,10 +56,12 @@ namespace WebAuthMe.Core
                     new Claim(ClaimTypes.Name, userIdentity.LastName),
                     new Claim(ClaimTypes.GivenName, userIdentity.FirstName),
                     new Claim(ClaimTypes.Email, userIdentity.MailAddress), 
+                    new Claim(ClaimTypes.Surname, userIdentity.LastName), 
+                    new Claim("AccountPicture", userIdentity.AccountPictureUrl), 
                 }),
 
                 TokenIssuerName = "self",
-                AppliesToAddress = "http://www.example.com",
+                AppliesToAddress = audience,
                 
                 Lifetime = new Lifetime(now, now.AddMinutes(2)),
                 SigningCredentials = new SigningCredentials(

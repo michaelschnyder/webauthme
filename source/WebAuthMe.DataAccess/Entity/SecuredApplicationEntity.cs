@@ -1,4 +1,5 @@
-﻿using Microsoft.WindowsAzure.Storage.Table;
+﻿using System.Collections.Generic;
+using Microsoft.WindowsAzure.Storage.Table;
 
 namespace WebAuthMe.DataAccess.Entity
 {
@@ -12,5 +13,10 @@ namespace WebAuthMe.DataAccess.Entity
         {
             this.PartitionKey = uniqueApplicatioName;
         }
+
+        public string SymmetricSecurityKey { get; set; }
+        public string Audience { get; set; }
+
+
     }
 }

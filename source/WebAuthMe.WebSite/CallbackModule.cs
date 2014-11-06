@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Configuration;
 using System.Linq;
 using Nancy;
 using WebAuthMe.Core;
@@ -20,11 +19,9 @@ namespace WebAuthMe.WebSite
 
             Get["/callback/{name}"] = x =>
             {
-                var authProviderName = x.Name.ToString();
-                var splitted = this.Request.Url.HostName.Split('.');
+                var authProviderName = x.Name;
 
-                var uniqueAppName = splitted.First();
-
+                var uniqueAppName = this.GetAppName();
 
                 IYammerAuthProvider provider = null;
                 AuthProviderSettingEntity providerSettings = null;
@@ -62,7 +59,9 @@ namespace WebAuthMe.WebSite
                 {
                     var factory = new TokenFactory();
 
-                    var tokenString = factory.CreateToken(userIdentity);
+                    var appConfig = this.data.GetApplication(this.GetAppName());
+
+                    var tokenString = factory.CreateToken(userIdentity, appConfig.SymmetricSecurityKey, appConfig.Audience);
 
                     return tokenString;
                 }
@@ -70,6 +69,15 @@ namespace WebAuthMe.WebSite
                 return "Cannot handle " + authProviderName;
 
             };
+        }
+
+        private string GetAppName()
+        {
+            var splitted = this.Request.Url.HostName.Split('.');
+
+            var uniqueAppName = splitted.First();
+
+            return uniqueAppName;
         }
     }
 }
