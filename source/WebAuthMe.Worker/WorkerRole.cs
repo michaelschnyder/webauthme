@@ -1,24 +1,28 @@
+using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
+using Microsoft.WindowsAzure;
+using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
+using Microsoft.WindowsAzure.Storage;
 using WebAuthMe.Core;
+using WebAuthMe.Server;
 
-namespace WebAuthMe.WorkerRole
+namespace WebAuthMe.Worker
 {
     public class WorkerRole : RoleEntryPoint
     {
         private readonly CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
         private readonly ManualResetEvent runCompleteEvent = new ManualResetEvent(false);
-        private WebAuthMeServer server;
+        private WebAuthMeServer webAuthMeServer;
 
         public override void Run()
         {
-            
-            this.server.Start();
-
-            Trace.TraceInformation("WebAuthMe.WorkerRole is running and accessible via " + this.server.Endpoint);
+            Trace.TraceInformation("WebAuthMe.Worker is running");
 
             try
             {
@@ -40,33 +44,37 @@ namespace WebAuthMe.WorkerRole
 
             bool result = base.OnStart();
 
+            Trace.TraceInformation("WebAuthMe.Worker has been started");
+
             var roleInstanceEndpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["GlobalEndpoint"];
+            var connectionString = CloudConfigurationManager.GetSetting("StorageConnectionString");
 
-            this.server = new WebAuthMeServer(roleInstanceEndpoint.IPEndpoint);
-
-
-
-            Trace.TraceInformation("WebAuthMe.WorkerRole has been started");
+            this.webAuthMeServer = new WebAuthMeServer(new WebAuthConfiguration()
+            {
+                IpEndPoint = roleInstanceEndpoint.IPEndpoint,
+                ConnectionString = connectionString
+            });
 
             return result;
         }
 
         public override void OnStop()
         {
-            Trace.TraceInformation("WebAuthMe.WorkerRole is stopping");
-
-            this.server.Stop();
+            Trace.TraceInformation("WebAuthMe.Worker is stopping");
 
             this.cancellationTokenSource.Cancel();
             this.runCompleteEvent.WaitOne();
 
             base.OnStop();
 
-            Trace.TraceInformation("WebAuthMe.WorkerRole has stopped");
+            Trace.TraceInformation("WebAuthMe.Worker has stopped");
         }
 
         private async Task RunAsync(CancellationToken cancellationToken)
         {
+
+            this.webAuthMeServer.Start();
+
             // TODO: Replace the following with your own logic.
             while (!cancellationToken.IsCancellationRequested)
             {

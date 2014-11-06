@@ -5,7 +5,7 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.4</ProductVersion>
-    <ProjectGuid>768171f7-334f-4010-b664-d938d386a410</ProjectGuid>
+    <ProjectGuid>d20869c1-9d2c-4eb7-977a-538c66de495b</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>WebAuthMe.Cloud</RootNamespace>
@@ -37,26 +37,22 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WebAuthMe.WorkerRole\WebAuthMe.WorkerRole.csproj">
-      <Name>WebAuthMe.WorkerRole</Name>
-      <Project>{5ac3ab48-d8ee-4214-b225-c17f015b35de}</Project>
+    <ProjectReference Include="..\WebAuthMe.Worker\WebAuthMe.Worker.csproj">
+      <Name>WebAuthMe.Worker</Name>
+      <Project>{5d77e831-0133-482a-9dd8-e11214507982}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
-      <RoleName>WebAuthMe.WorkerRole</RoleName>
+      <RoleName>WebAuthMe.Worker</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Profiles" />
-    <Folder Include="WebAuthMe.WorkerRoleContent\" />
+    <Folder Include="WebAuthMe.WorkerContent\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebAuthMe.WorkerRoleContent\diagnostics.wadcfg">
+    <Content Include="WebAuthMe.WorkerContent\diagnostics.wadcfg">
       <SubType>Content</SubType>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <PublishProfile Include="WebAuthMe.WorkerRoleContent\webauthme-prodProduction.azurePubxml" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>

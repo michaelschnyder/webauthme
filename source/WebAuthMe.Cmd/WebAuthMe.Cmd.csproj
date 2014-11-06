@@ -49,12 +49,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WebAuthMe.Core\WebAuthMe.Core.csproj">
       <Project>{A8F71E09-ECA5-4D21-8E8E-07862366CE32}</Project>
       <Name>WebAuthMe.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebAuthMe.Server\WebAuthMe.Server.csproj">
+      <Project>{7afa973c-b457-44e3-931a-7e6850dd0b71}</Project>
+      <Name>WebAuthMe.Server</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

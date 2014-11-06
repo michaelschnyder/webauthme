@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using WebAuthMe.Core;
+using WebAuthMe.Server;
 
-namespace WebAuthenticateMe.Cmd
+namespace WebAuthMe.Cmd
 {
     class Program
     {
@@ -14,7 +11,12 @@ namespace WebAuthenticateMe.Cmd
         {
             var ipEndPoint = new IPEndPoint(IPAddress.Loopback, 9001);
 
-            var core = new WebAuthMeServer(ipEndPoint);
+            var core = new WebAuthMeServer(new WebAuthConfiguration()
+            {
+                IpEndPoint = ipEndPoint,
+                ConnectionString = "UseDevelopmentStorage=true"
+            });
+
             core.Start();
 
             Console.Write("Service started on " + ipEndPoint + ". Press a key to end");

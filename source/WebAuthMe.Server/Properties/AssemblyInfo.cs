@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("WebAuthMe.WorkerRole")]
+[assembly: AssemblyTitle("WebAuthMe.Server")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Zuehlke Technology Group")]
-[assembly: AssemblyProduct("WebAuthMe.WorkerRole")]
+[assembly: AssemblyProduct("WebAuthMe.Server")]
 [assembly: AssemblyCopyright("Copyright © Zuehlke Technology Group 2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("136e73d2-fff1-48be-bb44-9da7e86dca4f")]
+[assembly: Guid("858b4e05-5f6a-49d3-8445-6a6d68710831")]
 
 // Version information for an assembly consists of the following four values:
 //
