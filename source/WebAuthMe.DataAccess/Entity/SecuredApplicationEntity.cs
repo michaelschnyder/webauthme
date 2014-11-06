@@ -13,18 +13,4 @@ namespace WebAuthMe.DataAccess.Entity
             this.PartitionKey = uniqueApplicatioName;
         }
     }
-
-    public class AuthenticationProviderSettingEntity : TableEntity
-    {
-        public AuthenticationProviderSettingEntity()
-        {
-        }
-
-        public AuthenticationProviderSettingEntity(string uniqueApplicatioName, string authenticationProvider)
-        {
-            this.PartitionKey = uniqueApplicatioName;
-            this.RowKey = authenticationProvider;
-        }
-    }
-
 }

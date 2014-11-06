@@ -9,7 +9,7 @@ namespace WebAuthMe.DataAccess
     public interface IAzureDataAccessLayer
     {
         SecuredApplicationEntity GetApplication(string uniqueName);
-        List<AuthenticationProviderSettingEntity> GetAuthProviderSettingsForApplication(string uniqueName);
+        List<AuthProviderSettingEntity> GetAuthProviderSettingsForApplication(string uniqueName);
     }
 
     public class AzureDataAccessLayer : IAzureDataAccessLayer
@@ -47,9 +47,9 @@ namespace WebAuthMe.DataAccess
             return result.First();
         }
 
-        public List<AuthenticationProviderSettingEntity> GetAuthProviderSettingsForApplication(string uniqueName)
+        public List<AuthProviderSettingEntity> GetAuthProviderSettingsForApplication(string uniqueName)
         {
-            TableQuery<AuthenticationProviderSettingEntity> rangeQuery = new TableQuery<AuthenticationProviderSettingEntity>().Where(
+            TableQuery<AuthProviderSettingEntity> rangeQuery = new TableQuery<AuthProviderSettingEntity>().Where(
                     TableQuery.GenerateFilterCondition("PartitionKey", QueryComparisons.Equal, uniqueName));
 
             var result = this.authProviders.ExecuteQuery(rangeQuery);

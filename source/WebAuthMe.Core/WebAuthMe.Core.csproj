@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthProvider\IYammerAuthProvider.cs" />
     <Compile Include="AuthProvider\YammerAuthProvider.cs" />
     <Compile Include="TokenFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

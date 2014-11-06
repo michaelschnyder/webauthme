@@ -1,6 +1,8 @@
 ﻿using System.Linq;
+using System.Text;
 using Nancy;
 using WebAuthMe.Core;
+using WebAuthMe.Core.AuthProvider;
 using WebAuthMe.DataAccess;
 
 namespace WebAuthMe.WebSite
@@ -29,10 +31,39 @@ namespace WebAuthMe.WebSite
 
                 if (app != null)
                 {
+                    var response = new StringBuilder();
+
                     var providers = this.data.GetAuthProviderSettingsForApplication(app.PartitionKey);
+
+                    // Create login methods
+
+                    response.AppendLine("<h1>Select Auth for :" + uniqueAppName + "</h1>");
+
+                    response.AppendLine("<ol>");
+
+                    foreach (var provider in providers)
+                    {
+                        var allConfig = provider.ConfigurationRaw.Split(',');
+
+                        var values = allConfig.Select(i => i.Split('=').Last()).ToArray();
+                        var loginUrl = string.Empty;
+
+                        if (provider.RowKey == "yammer")
+                        {
+                            var concreteProvider = new YammerAuthProvider();
+
+                            loginUrl = concreteProvider.GetLoginUrl(values);
+                        }
+
+                        response.AppendLine(string.Format("<li><a href=\"{0}\">Take {1}</a></li>",loginUrl, provider.RowKey));
+
+                    }
+
+                    response.AppendLine("</ol>");
+                    return response.ToString();
                 }
 
-                return "Select AuthProvider for " + uniqueAppName;
+                return "Sorry No AuthProvider for " + uniqueAppName;
 
             };
         }
