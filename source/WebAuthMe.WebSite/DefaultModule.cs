@@ -50,9 +50,9 @@ namespace WebAuthMe.WebSite
 
                         if (provider.RowKey == "yammer")
                         {
-                            var concreteProvider = new YammerAuthProvider();
+                            var concreteProvider = new YammerAuthProvider(provider.Configuration);
 
-                            loginUrl = concreteProvider.GetLoginUrl(values);
+                            loginUrl = concreteProvider.GetLoginUrl();
                         }
 
                         response.AppendLine(string.Format("<li><a href=\"{0}\">Take {1}</a></li>",loginUrl, provider.RowKey));

@@ -1,8 +1,11 @@
-﻿namespace WebAuthMe.Core.AuthProvider
+﻿using System.Collections.Generic;
+
+namespace WebAuthMe.Core.AuthProvider
 {
     public interface IYammerAuthProvider
     {
-        string GetLoginUrl(params object[] settings);
-        UserIdentity HandleCallback(string callBackInfo);
+        
+        string GetLoginUrl();
+        UserIdentity HandleCallback(Dictionary<string, string> info);
     }
 }
