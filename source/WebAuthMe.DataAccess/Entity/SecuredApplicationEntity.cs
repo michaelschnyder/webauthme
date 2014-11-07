@@ -16,7 +16,6 @@ namespace WebAuthMe.DataAccess.Entity
 
         public string SymmetricSecurityKey { get; set; }
         public string Audience { get; set; }
-
-
+        public string AuthScreenTemplate { get; set; }
     }
 }

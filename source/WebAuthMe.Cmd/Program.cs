@@ -9,7 +9,7 @@ namespace WebAuthMe.Cmd
     {
         static void Main(string[] args)
         {
-            var ipEndPoint = new IPEndPoint(IPAddress.Loopback, 9001);
+            var ipEndPoint = new IPEndPoint(IPAddress.Loopback, 81);
 
             var core = new WebAuthMeServer(new WebAuthConfiguration()
             {

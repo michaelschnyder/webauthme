@@ -34,8 +34,6 @@ namespace WebAuthMe.WebSite
                             .FirstOrDefault(p => p.RowKey == authProviderName);
 
                     provider = new YammerAuthProvider(providerSettings.Configuration);
-
-
                 }
 
                 if (provider != null)
@@ -63,7 +61,9 @@ namespace WebAuthMe.WebSite
 
                     var tokenString = factory.CreateToken(userIdentity, appConfig.SymmetricSecurityKey, appConfig.Audience);
 
-                    return tokenString;
+                    var setTokenToWindow = "<script>window.authtoken='" + tokenString + "';</script>";
+
+                    return "<html><body>" + tokenString + setTokenToWindow + "</body></html>";
                 }
 
                 return "Cannot handle " + authProviderName;

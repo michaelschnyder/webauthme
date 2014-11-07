@@ -19,6 +19,8 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "WebAuthMe.Cloud", "WebAuthM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAuthMe.Worker", "WebAuthMe.Worker\WebAuthMe.Worker.csproj", "{5D77E831-0133-482A-9DD8-E11214507982}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAuthMe.Services", "WebAuthMe.Services\WebAuthMe.Services.csproj", "{06A6A791-6025-4463-BA07-3CDB36E263D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -57,6 +59,10 @@ Global
 		{5D77E831-0133-482A-9DD8-E11214507982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D77E831-0133-482A-9DD8-E11214507982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D77E831-0133-482A-9DD8-E11214507982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06A6A791-6025-4463-BA07-3CDB36E263D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06A6A791-6025-4463-BA07-3CDB36E263D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06A6A791-6025-4463-BA07-3CDB36E263D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06A6A791-6025-4463-BA07-3CDB36E263D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
