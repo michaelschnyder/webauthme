@@ -37,7 +37,7 @@ namespace WebAuthMe.WebSite
 
                     // Create login methods
 
-                    response.AppendLine("<h1>Select Auth for :" + uniqueAppName + "</h1>");
+                    response.AppendLine("<h1>Select Auth for:" + uniqueAppName + "</h1>");
 
                     response.AppendLine("<ol>");
 
