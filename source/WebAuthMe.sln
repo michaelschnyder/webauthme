@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30723.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAuthMe.Cmd", "WebAuthMe.Cmd\WebAuthMe.Cmd.csproj", "{8DFF8103-84AA-4EBE-B343-D2C7B49E5DD1}"
 EndProject

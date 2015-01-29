@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>2.4</ProductVersion>
+    <ProductVersion>2.5</ProductVersion>
     <ProjectGuid>d20869c1-9d2c-4eb7-977a-538c66de495b</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -51,17 +51,16 @@
     <Folder Include="WebAuthMe.WorkerContent\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="WebAuthMe.WorkerContent\diagnostics.wadcfg">
-      <SubType>Content</SubType>
-    </Content>
+    <PublishProfile Include="Profiles\webauthme-prodProduction.azurePubxml" />
+    <PublishProfile Include="Profiles\webauthme-prodProduction1.azurePubxml" />
   </ItemGroup>
   <ItemGroup>
-    <PublishProfile Include="Profiles\webauthme-prodProduction.azurePubxml" />
+    <DiagnosticsConfiguration Include="WebAuthMe.WorkerContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
     <VisualStudioVersion Condition=" '$(VisualStudioVersion)' == '' ">10.0</VisualStudioVersion>
-    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\2.4\</CloudExtensionsDir>
+    <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\2.5\</CloudExtensionsDir>
   </PropertyGroup>
   <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
 </Project>

@@ -3,7 +3,6 @@
   <WorkerRole name="WebAuthMe.Worker" vmsize="Small">
     <Runtime executionContext="elevated" />
     <Imports>
-      <Import moduleName="Diagnostics" />
     </Imports>
     <ConfigurationSettings>
       <Setting name="StorageConnectionString" />
